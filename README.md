@@ -11,6 +11,7 @@ cd demo_project/
 cd positiveGPT/
 ```
 
+
 ## Run the following scripts to start the front end
 
 ### `npm start`
@@ -28,6 +29,26 @@ This is a sample page that you can see
 <img src='https://i.imgur.com/176puNT.png' heigh="600" title='Sample frontend page' width='' alt='Video Walkthrough' />
 
 ## Run the following scripts to start the simple back end (nodejs)
+
+### modify line 13-15 in index.js to use your own config for OpenAPI Key
+```
+const configuration = new Configuration({
+    // organization: "", // replace with your own organization key
+    // apiKey: "", // replace with your own api key
+});
+```
+- Instructions Below to create your Open AI API Account and getyour own API Key and Organization Key: 
+    -  First, sign up for OpenAI API on this [link](https://openai.com/blog/openai-api). 
+    - Once you signed up and logged in, you need to open this [page](https://platform.openai.com/account/usage), click on `Personal` Icon on the top right corner, and select View API keys in drop-down menu or Create New Secrete Key (API key).
+    - copy the API key and paste it in between the double quote of `apiKey: ""`
+    - Clcik the `Settings` Button on the left side, find the organization ID and paste it in between the double quote of `organization: ""`
+- Now uncomment the code 
+```
+const configuration = new Configuration({
+    organization: "", // replace with your own organization key, should start with org
+    apiKey: "", // replace with your own api key, should start with sk
+});
+```
 
 If you are in positiveGPT/ directory, create a new cmd window in the current directory, type the following
 ```
