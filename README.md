@@ -1,18 +1,46 @@
-# Getting Started with Create React App
+# Positive Reframing Model Front End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository serves as the frontend codebase for the Positive-Reframing Project and constructed by React.
 
-## Available Scripts
+## Get it started
 
-In the project directory, you can run:
+### Go to the postiveGPT sub directory to start the React app
+```
+cd Positive_Reframs_Frontend/
+cd demo_project/
+cd positiveGPT/
+```
+
+## Run the following scripts to start the front end
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode so that you can view your app.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+## Run the following scripts to start the simple back end (nodejs)
+
+If you are in positiveGPT/ directory, create a new cmd window in the current directory, type the following
+```
+cd ../
+```
+Make sure you are back to the `demo_project/` directory  
+Then run the following command
+```
+node index.js
+```
+
+And you should see a similar message like  `Example app listening at http://localhost:3001`
+
+
+## Use the website as you wish
+Type a negative sentence into the main text box, and click submit, wait for a few seconds, and the system would generate the best 5 paraphrased sentence according to your input.
+
+
+## Other useful scripts (Optional)
 
 ### `npm test`
 
@@ -29,42 +57,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
