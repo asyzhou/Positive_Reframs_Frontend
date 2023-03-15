@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 This is a sample page that you can see
 
-<img src='https://i.imgur.com/176puNT.png' heigh="800" title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/176puNT.png' heigh="600" title='Sample frontend page' width='' alt='Video Walkthrough' />
 
 ## Run the following scripts to start the simple back end (nodejs)
 
@@ -47,6 +47,7 @@ And you should see a similar message like  `Example app listening at http://loca
 ## Use the website as you wish
 Type a negative sentence into the main text box, and click submit, wait for a few seconds, and the system would generate the best 5 paraphrased sentence according to your input.
 
+<img src='https://i.imgur.com/qhnr8RX.png' heigh="600" title='Sample frontend page after submission' width='' alt='Video Walkthrough' />
 
 ## Other useful scripts (Optional)
 
