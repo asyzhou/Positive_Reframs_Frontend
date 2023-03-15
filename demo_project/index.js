@@ -12,8 +12,8 @@ const app = express();
 const port = 3001;
 
 const configuration = new Configuration({
-    organization: "org-I07CtotjNyDo956rHpexwjod",
-    apiKey: "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",
+    // organization: "", // replace with your own organization key
+    // apiKey: "", // replace with your own api key
 });
 const openai = new OpenAIApi(configuration);
 // const response = await openai.listEngines();
@@ -27,7 +27,7 @@ app.post('/', async (req, res) => {
 
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Given the text ${message} generate a list of 5 positively-reframed sentence without changing the meaning of the sentence(limit to 100 words)`,
+        prompt: `Given the text ${message} generate a list of 5 positively-reframed sentence without changing the meaning of the sentence(limit to 100 words, just the text, no index)`,
         max_tokens: 100,
         temperature: 0,
       });
