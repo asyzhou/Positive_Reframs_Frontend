@@ -19,7 +19,12 @@ Runs the app in the development mode so that you can view your app.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You may also see any lint errors in the console.   
+&nbsp;
+&nbsp;
+This is a sample page that you can see
+
+<img src='https://i.imgur.com/176puNT.png' heigh="800" title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Run the following scripts to start the simple back end (nodejs)
 
@@ -32,6 +37,8 @@ Then run the following command
 ```
 node index.js
 ```
+
+
 
 And you should see a similar message like  `Example app listening at http://localhost:3001`
 
