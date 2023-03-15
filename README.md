@@ -1,4 +1,4 @@
-# Positive Reframing Model Front End
+# Positive Reframing Model Front/Back End
 
 This repository serves as the frontend codebase for the Positive-Reframing Project and constructed by React.
 
@@ -18,11 +18,11 @@ cd positiveGPT/
 Runs the app in the development mode so that you can view your app.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.   
+- The page will reload when you make changes.\
+- You may also see any lint errors in the console.   
     
     
-    
+
 This is a sample page that you can see
 
 <img src='https://i.imgur.com/176puNT.png' heigh="800" title='Video Walkthrough' width='' alt='Video Walkthrough' />
