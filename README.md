@@ -30,6 +30,12 @@ This is a sample page that you can see
 
 ## Run the following scripts to start the simple back end (nodejs)
 
+If you are in positiveGPT/ directory, create a new cmd window in the current directory, type the following
+```
+cd ../
+```
+Make sure you are back to the `demo_project/` directory  
+
 ### modify line 13-15 in index.js to use your own config for OpenAPI Key
 ```
 const configuration = new Configuration({
@@ -50,11 +56,7 @@ const configuration = new Configuration({
 });
 ```
 
-If you are in positiveGPT/ directory, create a new cmd window in the current directory, type the following
-```
-cd ../
-```
-Make sure you are back to the `demo_project/` directory  
+### Start the back end service
 Then run the following command
 ```
 node index.js
