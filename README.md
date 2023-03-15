@@ -20,10 +20,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.   
-<pre>
-
-
-</pre>
+    
+    
+    
 This is a sample page that you can see
 
 <img src='https://i.imgur.com/176puNT.png' heigh="800" title='Video Walkthrough' width='' alt='Video Walkthrough' />
