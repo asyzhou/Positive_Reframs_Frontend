@@ -10,7 +10,12 @@
   text-align: center;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   color: black;
+
+  --grey: #e7e3e3;
+  --deeper-grey: #bebfc0;;
 }
+
+
 
 h1 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 30px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
 h3 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
@@ -67,20 +72,26 @@ input[type="file"] {
 
 /* A submit button with the black backgrond color and white text */
 .submit_button {
-  background-color: #282c34;
-  border: 1px solid transparent;
   border-radius: 8px;
-  color: white;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-size: 16px;
+  border: 1px solid transparent;
   margin-top: 1.5rem;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--grey);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.submit_button:hover {
+  background-color: var(--deeper-grey);
 }
 
 /* for button called submit_button if user click the button the background color turns to orange */
 .submit_button:hover {
-  background-color: #5f7688;
-  color: rgb(253, 253, 253);
+  background-color: #bebfc0;
+  color: rgb(41, 32, 32);
 }
 
 /* a textarea called resume_text_area that set the text style as Times New Roman and text size as 20pt */
@@ -154,4 +165,9 @@ button{
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+}
+
+.Strategy_Selection{
+  margin-top: 10vh;
+  height: 20vh;
 }
