@@ -7,19 +7,30 @@
     flex-wrap: wrap;
 }
 
-button {
+#selection-list{
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: var(--grey);
-    cursor: pointer;
-    transition: background-color 0.5s;
+    background-color: var(--light-grey);
+    font-size: 1.1em;
     color: black;
-  }
-  
-button:hover {
+    padding: 0.3em 1em;
+    transition: background-color 0.5s;
+    margin-top: 10px;
+}
+
+#selection-list:hover {
     background-color: rgb(202, 197, 197);
+}
+
+#selection-list:focus{
+    outline: none;
+}
+
+#selection-list option{
+    background-color: rgb(247, 251, 252);
+    border-radius: 8px;
+}
+
+#first-selection{
+    margin-top: 10px;
 }

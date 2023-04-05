@@ -12,34 +12,65 @@ const app = express();
 const port = 3001;
 
 const configuration = new Configuration({
-    // organization: "", // replace with your own organization key
-    // apiKey: "", // replace with your own api key
+    organization: "org-I07CtotjNyDo956rHpexwjod", // replace with your own organization key
+    apiKey: "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", // replace with your own api key
 });
 const openai = new OpenAIApi(configuration);
 // const response = await openai.listEngines();
 
-
+// // Middleware to parse JSON-formatted request bodies
 app.use(bodyParser.json());
+
 app.use(cors()); // add CORS
 
 app.post('/', async (req, res) => {
-    const { message } = req.body;
+    const { message, strategy } = req.body;
+    console.log(message)
+    
+    let url = "https://dominguesm-positive-reframing-en.hf.space/run/predict";
+    // let url = "https://raghu8096-gradio-sentiment-analyzer.hf.space/run/predict";
+    let response_from_own_server = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            data: [
+                message, strategy
+            ]
+        })
+    })
 
-    const response = await openai.createCompletion({
+    response_from_own_server = await response_from_own_server.json();
+    
+    const response_from_gpt = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Given the text ${message} generate a list of 5 positively-reframed sentence without changing the meaning of the sentence(limit to 100 words, just the text, no index)`,
+        prompt: `Given the text ${message} generate a list of 3 positively-reframed sentence without changing the meaning of the sentence(limit to 100 words)`,
         max_tokens: 100,
         temperature: 0,
-      });
-    
-    if(response.data){
-        if(response.data.choices[0].text){
-            const text_response = response.data.choices[0].text;
-            res.json({
-                message: text_response
-            }); // send back a json object with the message
+    });
+
+    // for the fetch() method, including the HTTP method (POST), headers (Content-Type: application/json), 
+    // and request body (JSON.stringify({data: [[message]]})).
+    let text_response_own = "test_string";
+    let text_response_gpt = "";
+
+    if(response_from_own_server.data){
+        if(response_from_own_server.data[0]){
+            text_response_own = response_from_own_server.data[0];
+            console.log("text response is: ", text_response_own);
         }
     }
+    
+    if(response_from_gpt.data){
+        if(response_from_gpt.data.choices[0].text){
+            text_response_gpt = response_from_gpt.data.choices[0].text;
+            console.log(text_response_gpt);
+        }
+    }
+
+    res.json({
+        response_from_own_server: text_response_own,
+        response_from_gpt: text_response_gpt
+    }); // send back a json object with the message
     
 }); 
 
