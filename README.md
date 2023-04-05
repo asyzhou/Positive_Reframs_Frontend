@@ -91,4 +91,13 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Components break down
 
-### Suggestion
+### Suggestion-Card
+The suggestion card on the right of the screen, the component includes the content that the postive-reframing model returns and also an area for user to input their feedbacks on the suggestion.
+
+### Strategy Selection
+A section for user to choose the strategy used for positive-reframing.
+
+## Backend
+### Fetch API from 2 Server
+1. OpenAI API - fetch the postive-reframed sentence from ChatGPT
+2. [Gradio API](https://gradio.app/) - fetch the response from the server of our own
