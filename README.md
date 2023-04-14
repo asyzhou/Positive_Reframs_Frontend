@@ -12,8 +12,8 @@ cd positiveGPT/
 ```
 
 
-## Run the following scripts to start the front end
-
+## Run the following scripts to start the front end 
+make sure you are at Positive_Reframs_Frontend/demo_project/positiveGPT
 ### `npm start`
 
 Runs the app in the development mode so that you can view your app.\
@@ -57,7 +57,7 @@ const configuration = new Configuration({
 ```
 
 ### Start the back end service
-Then run the following command
+Then run the following command in Positive_Reframs_Frontend/demo_project
 ```
 node index.js
 ```
