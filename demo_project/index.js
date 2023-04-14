@@ -12,8 +12,8 @@ const app = express();
 const port = 3001;
 
 const configuration = new Configuration({
-    organization: "org-I07CtotjNyDo956rHpexwjod", // replace with your own organization key
-    apiKey: "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", // replace with your own api key
+    organization: "", // replace with your own organization key
+    apiKey: "", // replace with your own api key
 });
 const openai = new OpenAIApi(configuration);
 // const response = await openai.listEngines();
@@ -27,7 +27,7 @@ app.post('/', async (req, res) => {
     const { message, strategy } = req.body;
     console.log(message)
     
-    let url = "https://dominguesm-positive-reframing-en.hf.space/run/predict";
+    let url = "https://dominguesm-positive-reframing-ptbr.hf.space/run/predict";
     // let url = "https://raghu8096-gradio-sentiment-analyzer.hf.space/run/predict";
     let response_from_own_server = await fetch(url, {
         method: "POST",
@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
     
     const response_from_gpt = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Given the text ${message} generate a list of 3 positively-reframed sentence without changing the meaning of the sentence(limit to 100 words)`,
+        prompt: `Given the text ${message} and use ${strategy} as a strategy generate a list of 3 positively-reframed sentence without changing the meaning of the sentence(limit to 130 words)`,
         max_tokens: 100,
         temperature: 0,
     });
