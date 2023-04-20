@@ -24,7 +24,14 @@ function App(){
   const test_responses = ["1. Take a break and focus on self-care. Make sure to get enough rest, eat healthy meals, and exercise regularly.",
                                "2. Make time for activities that bring you joy. Whether it’s reading a book, listening to music, or going for a walk, find something that helps you relax and enjoy yourself.", 
                                "3. Talk to someone. Reach out to a friend or family member and let them know how you’re feeling. Talking to"];
-      
+  
+  const [userRatings, setUserRatings] = React.useState([
+    {id: 0, rating: 0}, // own server response 1
+    {id: 1, rating: 0}, // gpt response 1
+    {id: 2, rating: 0}, // gpt response 2
+    {id: 3, rating: 0}, // gpt response 3
+  ]); // user ratings for each response
+                               
   const test_responses_items = test_responses.map((response_single) =>
         <li className='suggestion_card_container'>
           <SuggestionCard text={response_single} />
@@ -84,26 +91,49 @@ function App(){
 
       const non_empty_responses_gpt = responses_gpt.filter((response_single) => response_single !== "");
       const non_empty_responses_own = response_from_own_server.filter((response_single) => response_single !== "");
-      const responses_items_gpt = non_empty_responses_gpt.map((response_single) =>
+      
+      const responses_items_own = non_empty_responses_own.map((response_single, index) =>
         (<li className='suggestion_card_container'>
-          <SuggestionCard text={response_single} />
+          <SuggestionCard text={response_single} id={index} handleRatingChange={handleRatingChange}/>
         </li>)
       );
 
-      const responses_items_own = non_empty_responses_own.map((response_single) =>
+      const responses_items_gpt = non_empty_responses_gpt.map((response_single, index) =>
         (<li className='suggestion_card_container'>
-          <SuggestionCard text={response_single} />
+          <SuggestionCard text={response_single} id={index+1} handleRatingChange={handleRatingChange}/>
         </li>)
       );
 
+      
       set_responses_gpt(responses_items_gpt);
       set_responses_own(responses_items_own);
       setIsLoading(false);
     }); // send the message to the server
   }
   
-  
-  
+  const handleRatingChange = (rating, id) => {
+    console.log("Target rating is: ", rating);
+    console.log("id is:",id);
+    // record the rating from user
+
+    // change the rating in the userRatings array according to the id using setUserRatings
+    const updatedUserRatings = userRatings.map((response) => {
+      if (response.id == 2) {
+        return {
+          ...response,
+          rating: 4, // update the rating to 4
+        };
+      } else {
+        return response; // return the original object for other responses
+      }
+    });
+    setUserRatings(updatedUserRatings);
+    
+    console.log("User ratings are: ", updatedUserRatings);
+    // send it to the supabase
+
+
+  }
 
   // for the response, chop it down to a list of strings if they are separated by a dot character
   // then display each string in a list

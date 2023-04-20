@@ -18,19 +18,15 @@ const Suggestion_card = (props) => {
             <div>
                 <p className="suggestion_card_description">{props.text}</p>
             </div>
-            <div id="1" className="stars_container">
-                {
-                    starList.map((val) => (
-                        <div className="suggestion_card_image_container">
-                            <img key={val} 
-                            className={`suggestion_card_image ${val <= rating ? "yellow" : "default_color"}`} 
-                            src={star} alt="suggestion_card_image" onMouseOver={() => handleStarHover(val)} />
-                        </div>
-                    ))
-                }
-            </div>
-            <div>
-                <p>Ratings: {rating}</p>
+
+            <div className="rankings_selector"  onChange={(e)=>props.handleRatingChange(e.target.value, props.id)}>
+                <p>Rankings: </p>
+                <select id="selection-list" on>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
             </div>
         </div>
         
