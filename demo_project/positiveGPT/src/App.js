@@ -4,10 +4,11 @@
 
 // should be a resume and job description
 
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './App.css';
 import StrategySelection from './components/StrategySelection';
 import SuggestionCard from './components/SuggestionCard.jsx';
+import { supabase } from './client.js';
 
 function App(){
   const [message, setMessage] = React.useState(''); // message to send to server
@@ -19,17 +20,20 @@ function App(){
   const [isLoading, setIsLoading] = React.useState(false); // check whether the model has sent back a response or not
 
   const [responses_items_gpt, set_responses_gpt] = React.useState(''); // response from server
+  const [responses_text_gpt, set_responses_text_gpt] = React.useState(''); // response text from gpt
+
   const [responses_items_own, set_responses_own] = React.useState(''); // response from server
+  const [responses_text_own, set_responses_text_own] = React.useState(''); // response text from own server
   
   const test_responses = ["1. Take a break and focus on self-care. Make sure to get enough rest, eat healthy meals, and exercise regularly.",
                                "2. Make time for activities that bring you joy. Whether it’s reading a book, listening to music, or going for a walk, find something that helps you relax and enjoy yourself.", 
                                "3. Talk to someone. Reach out to a friend or family member and let them know how you’re feeling. Talking to"];
   
   const [userRatings, setUserRatings] = React.useState([
-    {id: 0, rating: 0}, // own server response 1
-    {id: 1, rating: 0}, // gpt response 1
-    {id: 2, rating: 0}, // gpt response 2
-    {id: 3, rating: 0}, // gpt response 3
+    {id: 0, rating: 1}, // own server response 1
+    {id: 1, rating: 1}, // gpt response 1
+    {id: 2, rating: 1}, // gpt response 2
+    {id: 3, rating: 1}, // gpt response 3
   ]); // user ratings for each response
                                
   const test_responses_items = test_responses.map((response_single) =>
@@ -104,35 +108,81 @@ function App(){
         </li>)
       );
 
+      // set response text
+      set_responses_text_own(non_empty_responses_own);
+      set_responses_text_gpt(non_empty_responses_gpt);
       
-      set_responses_gpt(responses_items_gpt);
+
+      // set response html elements
       set_responses_own(responses_items_own);
+      set_responses_gpt(responses_items_gpt);
+      
       setIsLoading(false);
     }); // send the message to the server
   }
   
-  const handleRatingChange = (rating, id) => {
-    console.log("Target rating is: ", rating);
+  const handleRatingChange = (updated_rating, id) => {
+    console.log("Target rating is: ", updated_rating);
     console.log("id is:",id);
     // record the rating from user
 
-    // change the rating in the userRatings array according to the id using setUserRatings
-    const updatedUserRatings = userRatings.map((response) => {
-      if (response.id == 2) {
-        return {
-          ...response,
-          rating: 4, // update the rating to 4
-        };
-      } else {
-        return response; // return the original object for other responses
-      }
-    });
-    setUserRatings(updatedUserRatings);
+    setUserRatings(prevRatings => {
+      // Get the index of the rating with the provided id
+      const index = prevRatings.findIndex(rating => rating.id == id);
     
-    console.log("User ratings are: ", updatedUserRatings);
-    // send it to the supabase
+      // Create a new array with updated values
+      const updatedRatings = [...prevRatings];
+      updatedRatings[index] = {
+        ...updatedRatings[index],
+        rating: parseInt(updated_rating) // Set the new rating value
+      };
+    
+      // Return the updated array
+      return updatedRatings;
+    });
+  }
 
+  useEffect(() => {
+    // console log when the userRatings array is updated
+    console.log("User ratings are: ", userRatings);
+  }, [userRatings]);
 
+  const handleFeedBackSubmission = () => {
+    console.log("User ratings Submitted: ", userRatings);
+    postFeedBack();
+  }
+
+  const postFeedBack = async () => {
+    // if the rating have duplicates, then don't post to database, and alert the user
+    const current_ratings = userRatings.map((rating) => rating.rating);
+    const uniqueRatings = [...new Set(current_ratings)];
+    if(uniqueRatings.length !== current_ratings.length){
+      alert("Please make sure you have rated each response differently.");
+      return;
+    }
+
+    await console.log("Posting feedback to database", userRatings[0].rating)
+    // console log responses text for own server and gpt
+    console.log("Own server responses: ", responses_text_own);
+    console.log("GPT responses: ", responses_text_gpt);
+
+    const { data, error } = await supabase
+      .from('Ratings')
+      .insert([
+        { 
+          original_message: message,
+          own_response_1_text: responses_text_own[0],
+          own_response_1_rating: userRatings[0].rating,
+          gpt_response_1_text: responses_text_gpt[0],
+          gpt_response_1_rating: userRatings[1].rating,
+          gpt_response_2_text: responses_text_gpt[1],
+          gpt_response_2_rating: userRatings[2].rating,
+          gpt_response_3_text: responses_text_gpt[2],
+          gpt_response_3_rating: userRatings[3].rating,
+        },
+    ])
+
+    if (error) console.log('error', error)
   }
 
   // for the response, chop it down to a list of strings if they are separated by a dot character
@@ -193,7 +243,15 @@ function App(){
                     <ul className='responses_items_contianer'>
                       {responses_items_gpt}
                     </ul>
+                    <button 
+                      class="submit_user_response_button" 
+                      role="button"
+                      onClick={handleFeedBackSubmission}>Submit Feedback</button>
                   </div>
+
+                  
+                  
+                  
                 )
               ) : (<p>No input yet</p>)
           }

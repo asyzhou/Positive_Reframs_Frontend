@@ -1,5 +1,6 @@
 // A express server at port 3000 which will handle API requests coming in and respond back to client wiht a json object
 // it iwll use body parser as well as cors to parse the body and allow cross origin requests
+require('dotenv').config();
 
 const OpenAI = require('openai');
 const { Configuration, OpenAIApi } = OpenAI;
@@ -12,11 +13,11 @@ const app = express();
 const port = 3001;
 
 const configuration = new Configuration({
-    organization: "org-I07CtotjNyDo956rHpexwjod", // replace with your own organization key
-    apiKey: "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", // replace with your own api key
+    organization: process.env.ORGANIZATION_KEY, // replace with your own organization key
+    apiKey: process.env.OPENAI_API_KEY, // replace with your own api key
 });
+
 const openai = new OpenAIApi(configuration);
-// const response = await openai.listEngines();
 
 // // Middleware to parse JSON-formatted request bodies
 app.use(bodyParser.json());
