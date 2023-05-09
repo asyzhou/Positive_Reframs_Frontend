@@ -55,7 +55,6 @@ function App(){
         console.log("Getting user file:")
         setMessage(event.target.result);
       }
-      
     } else {
       setFileName("File is not a clean text file. Please upload .txt file.");
     }

@@ -28,8 +28,7 @@ app.post('/', async (req, res) => {
     const { message, strategy } = req.body;
     console.log(message)
     
-    let url = "https://dominguesm-positive-reframing-ptbr.hf.space/run/predict";
-    // let url = "https://raghu8096-gradio-sentiment-analyzer.hf.space/run/predict";
+    let url = "https://ella2323-positive-reframing.hf.space/api/predict";
     let response_from_own_server = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,6 +56,11 @@ app.post('/', async (req, res) => {
     if(response_from_own_server.data){
         if(response_from_own_server.data[0]){
             text_response_own = response_from_own_server.data[0];
+            // text_response_own is  List[Tuple[str, str | float | None]] | None, // represents List of (word, category) tuples of 'Diff' Highlightedtext component
+            // example [ 'I am really unhappy today and I want to take a sleep.', null ], ['t I'm sure tomorrow will be better.", '+' ]
+            // concatenate the first element of each tuple
+            text_response_own = text_response_own.map((tuple) => tuple[0]).join(" ");
+            
             console.log("text response is: ", text_response_own);
         }
     }
