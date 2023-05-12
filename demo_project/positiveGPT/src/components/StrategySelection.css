@@ -1,17 +1,20 @@
-.strategies{
-    padding: 1rem 5px;
+.strategies {
+    padding: 0.6em 1.2em;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+
 }
 
-#selection-list{
+#selection-list {
     border-radius: 8px;
     border: 1px solid transparent;
     background-color: var(--light-grey);
-    font-size: 1.1em;
+    font-size: 1em;
+    font-family: inherit;
     color: black;
     padding: 0.3em 1em;
     transition: background-color 0.5s;
@@ -19,18 +22,18 @@
 }
 
 #selection-list:hover {
-    background-color: rgb(202, 197, 197);
+    background-color: rgba(241, 240, 240, 0.877);
 }
 
-#selection-list:focus{
+#selection-list:focus {
     outline: none;
 }
 
-#selection-list option{
-    background-color: rgb(247, 251, 252);
+#selection-list option {
+    background-color: rgba(241, 240, 240, 0.877);
     border-radius: 8px;
 }
 
-#first-selection{
-    margin-top: 10px;
+#first-selection {
+    margin-top: 1.5rem;
 }
