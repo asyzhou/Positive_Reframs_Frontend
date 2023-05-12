@@ -1,5 +1,7 @@
 # Positive Reframing Model Front/Back End
 
+Azure attempts to learn Git.
+
 This repository serves as the frontend codebase for the Positive-Reframing Project and constructed by React.
 
 ## Get it started
