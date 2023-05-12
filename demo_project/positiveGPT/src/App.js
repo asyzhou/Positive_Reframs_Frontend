@@ -9,6 +9,7 @@ import './App.css';
 import StrategySelection from './components/StrategySelection';
 import SuggestionCard from './components/SuggestionCard.jsx';
 import { supabase } from './client.js';
+import loadingDuck from './assets/loadingduck.gif';
 
 // added navigation
 import About from './components/about.js';
@@ -293,7 +294,8 @@ function App() {
                 <h1>Positively reframed sentences:</h1>
                 <div className='answer_area'>
                   {
-                    isLoading ? (<p>Loading a positive spin...</p>) :
+                    isLoading ? (<p><img src={loadingDuck} style={{ width: "150px", height: "auto" }} /> <br></br>
+                      Loading a positive spin... </p>) :
                       (
                         <div>
                           <h3>Own Responses</h3>
