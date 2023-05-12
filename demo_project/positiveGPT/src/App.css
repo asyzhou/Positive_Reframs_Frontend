@@ -1,0 +1,222 @@
+.App {
+  height: 600px;
+  text-align: center;
+}
+
+#root {
+  max-height: 1280px;
+  height: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  color: black;
+
+  --light-grey: #f3f3f3;
+  --grey: #e7e3e3;
+  --deeper-grey: #bebfc0;;
+}
+
+
+
+h1 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 30px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
+h3 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
+p { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
+
+blockquote { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; }
+pre { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+input[type="file"] {
+  display: none;
+}
+
+/* create a textarea box that is in the middle of the left screen */
+/* .textbox{
+  height: 300px;
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* A div named User_Submit that takes left half of the screen and center the text */
+.User_Submit {
+  margin-top: 20px;
+  float: left;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* A div named Model_Response that takes right half of the screen and center the text */
+.Model_Response {
+  float: right;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+}
+
+/* A div named App_Header that takes top 10% of the screen and the background color is black */
+.App_Header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* A submit button with the black backgrond color and white text */
+.submit_button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin-top: 1.5rem;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--grey);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.submit_button:hover {
+  background-color: var(--deeper-grey);
+}
+
+/* for button called submit_button if user click the button the background color turns to orange */
+.submit_button:hover {
+  background-color: #bebfc0;
+  color: rgb(41, 32, 32);
+}
+
+/* a textarea called resume_text_area that set the text style as Times New Roman and text size as 20pt */
+.positive_text_area {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 2rem;
+  height: 40vh;
+  width: 80%;
+  padding: 3% 5% 2%;
+  border-radius: 16px;
+}
+
+.answer_area{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.responses_items_contianer{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* display the items inside the div in the center */
+.suggestion_card_container{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  color: white;
+  text-align: center;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;  
+  border-radius: 8px;
+}
+
+.submit_text_container{
+  display: flex;
+  height: 20px;
+  width: 200px;
+}
+
+.submit_text_button{
+  background-color: rgba(179, 177, 177, 0.877);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  display: none;
+}
+
+.submit_text_button:hover {
+  background-color: rgba(241, 240, 240, 0.877);
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.submit_text_button:active {
+  background-color: rgba(214, 53, 53, 0.877);
+  border: none;
+}
+
+.custom-file-upload {
+  border: 1px solid transparent;
+  background-color: rgb(221, 218, 218);
+  color: #5fb0ee;
+  border-radius: 8px;
+
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.Strategy_Selection{
+  margin-top: 10vh;
+  height: 20vh;
+}
+
+
+/* CSS */
+.submit_user_response_button {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  margin-left: 3vw;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.submit_user_response_button:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.submit_user_response_button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.submit_user_response_button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
