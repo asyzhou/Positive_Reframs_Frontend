@@ -1,0 +1,439 @@
+.App {
+  height: 600px;
+  text-align: center;
+  padding: 10px;
+}
+
+
+#root {
+  max-height: 1280px;
+  height: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif, Lato;
+  color: black;
+
+  --light-grey: #f3f3f3;
+  --grey: #e7e3e3;
+  --deeper-grey: #bebfc0;
+}
+
+h0 {
+  font-family: "Helvetica Neue";
+  font-size: 30px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  letter-spacing: 8px;
+  display: inline;
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  font-family: "Lato", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-variant: normal;
+  /*font-weight: 400;*/
+  line-height: 26.4px;
+}
+
+h3 {
+  font-family: "Lato", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 15.4px;
+}
+
+p {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+blockquote {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+pre {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* create a textarea box that is in the middle of the left screen */
+/* .textbox{
+  height: 300px;
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* A div named User_Submit that takes left half of the screen and center the text */
+.User_Submit {
+  margin-top: 20px;
+  float: left;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.8s ease-in-out;
+
+}
+
+/* A div named Model_Response that takes right half of the screen and center the text */
+.Model_Response {
+  margin-top: 20px;
+  float: right;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  animation: fade-in 0.8s ease-out;
+
+}
+
+/* A div named App_Header that takes top 10% of the screen and the background color is black */
+.App_Header {
+  background-color: rgba(214, 53, 53, 1);
+  min-height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* negative thoughts file upload */
+.custom-file-upload {
+  background-color: rgba(241, 240, 240, 0.877);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin-top: 1.5rem;
+  color: #5fb0ee;
+  font-size: 1em;
+  font-family: inherit;
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-right: 10px;
+
+}
+
+.custom-file-upload:hover {
+  background-color: rgba(179, 177, 177, 0.877);
+}
+
+/* A submit button with the black backgrond color and white text */
+.submit_button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin-top: 1.5rem;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: rgba(241, 240, 240, 0.877);
+  cursor: pointer;
+  transition: 0.5s;
+  margin-left: 10px;
+}
+
+/* for button called submit_button if user click the button the background color turns to orange */
+.submit_button:hover {
+  background-color: rgba(179, 177, 177, 0.877);
+}
+
+/* a textarea called resume_text_area that set the text style as Times New Roman and text size as 20pt */
+.positive_text_area {
+  font-family: "Lato", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  height: 30vh;
+  width: 80%;
+  padding: 3% 5% 2%;
+  border-radius: 8px;
+  background-color: transparent;
+
+}
+
+.answer_area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.responses_items_contianer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* display the items inside the div in the center */
+.suggestion_card_container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  color: white;
+  text-align: center;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 8px;
+}
+
+.submit_text_container {
+  display: flex;
+  height: 20px;
+  width: 200px;
+}
+
+.submit_text_button {
+  background-color: rgba(179, 177, 177, 0.877);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  display: none;
+}
+
+.submit_text_button:hover {
+  background-color: rgba(241, 240, 240, 0.877);
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.submit_text_button:active {
+  background-color: rgba(214, 53, 53, 1);
+  border: none;
+}
+
+
+.Strategy_Selection {
+  margin-top: 10vh;
+  height: 20vh;
+}
+
+
+/* CSS */
+.submit_user_response_button {
+  align-items: center;
+  appearance: none;
+  background-color: rgba(241, 240, 240, 0.877);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Lato";
+  font-size: 1em;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  margin-left: 3vw;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s, transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+
+.submit_user_response_button:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.submit_user_response_button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.submit_user_response_button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
+/*TRYING TO MAKE BACKGROUND PRETTY*/
+
+.actual_content {
+  position: relative;
+  z-index: 1;
+  /* set a higher z-index value than the bouncing images */
+}
+
+
+.bouncing-circle {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  color: rgba(214, 53, 53, 1);
+  font-size: calc(10px + 2vmin);
+  font-family: 'Lato';
+  opacity: 0.4;
+  z-index: 0;
+  animation-name: floating;
+  -webkit-animation-name: floating;
+  animation-duration: 8s;
+  -webkit-animation-duration: 8s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+
+@keyframes floating {
+  0% {
+    transform: translateY(0%) rotate(-55deg);
+  }
+
+  50% {
+    transform: translateY(-300%) rotate(55deg);
+  }
+
+  100% {
+    transform: translateY(0%) rotate(-55deg);
+  }
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translateY(0%);
+  }
+
+  50% {
+    -webkit-transform: translateY(300%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
+/*About window*/
+.about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.about-window {
+  background-color: white;
+  padding: 10px;
+  width: 60%;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.about-window-close {
+  position: absolute;
+  color: var(--deeper-grey);
+  top: 0px;
+  right: 0px;
+  font: "Lato";
+  font-size: 20px;
+  font-weight: normal;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.about-content {
+  padding: 10px 20px 20px 20px;
+  position: relative;
+}
+
+.about-text {
+  margin: 20px;
+  position: relative;
+}
+
+/*About window x-out button*/
+
+button {
+  color: white;
+  font-family: "Helvetica Neue";
+  font-size: 30px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  opacity: 70%;
+}
+
+
+/*shifting tabs to the right when submitted*/
+
+.center {
+  transform: translateX(50%);
+}
+
+.left {
+  transform: translateX(0%);
+}
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    right: -100%;
+  }
+
+  100% {
+    opacity: 1;
+    right: 10%;
+  }
+}
+
+/* making buttons nice */
+.all_buttons_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
