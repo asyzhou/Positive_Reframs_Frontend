@@ -13,8 +13,8 @@ const app = express();
 const port = 3001;
 
 const configuration = new Configuration({
-    organization: '', // replace with your own organization key
-    apiKey: '', // replace with your own api key
+    organization: process.env.ORGANIZATION_KEY, // replace with your own organization key
+    apiKey: process.env.OPENAI_API_KEY, // replace with your own api key
 });
 
 const openai = new OpenAIApi(configuration);
@@ -27,7 +27,7 @@ app.use(cors()); // add CORS
 app.post('/', async (req, res) => {
     const { message, strategy } = req.body;
     console.log(message)
-
+    
     let url = "https://ella2323-positive-reframing.hf.space/api/predict";
     let response_from_own_server = await fetch(url, {
         method: "POST",
@@ -40,7 +40,7 @@ app.post('/', async (req, res) => {
     })
 
     response_from_own_server = await response_from_own_server.json();
-
+    
     const response_from_gpt = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `Given the text ${message} and use ${strategy} as a strategy generate a list of 3 positively-reframed sentence without changing the meaning of the sentence(limit to 130 words)`,
@@ -53,20 +53,20 @@ app.post('/', async (req, res) => {
     let text_response_own = "test_string";
     let text_response_gpt = "";
 
-    if (response_from_own_server.data) {
-        if (response_from_own_server.data[0]) {
+    if(response_from_own_server.data){
+        if(response_from_own_server.data[0]){
             text_response_own = response_from_own_server.data[0];
             // text_response_own is  List[Tuple[str, str | float | None]] | None, // represents List of (word, category) tuples of 'Diff' Highlightedtext component
             // example [ 'I am really unhappy today and I want to take a sleep.', null ], ['t I'm sure tomorrow will be better.", '+' ]
             // concatenate the first element of each tuple
             text_response_own = text_response_own.map((tuple) => tuple[0]).join(" ");
-
+            
             console.log("text response is: ", text_response_own);
         }
     }
-
-    if (response_from_gpt.data) {
-        if (response_from_gpt.data.choices[0].text) {
+    
+    if(response_from_gpt.data){
+        if(response_from_gpt.data.choices[0].text){
             text_response_gpt = response_from_gpt.data.choices[0].text;
             console.log(text_response_gpt);
         }
@@ -76,8 +76,8 @@ app.post('/', async (req, res) => {
         response_from_own_server: text_response_own,
         response_from_gpt: text_response_gpt
     }); // send back a json object with the message
-
-});
+    
+}); 
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
