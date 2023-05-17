@@ -73,7 +73,7 @@ function App(){
     setIsSubmitting(true);
     setIsLoading(true);
     event.preventDefault();
-    await fetch('http://localhost:3001', {
+    await fetch('https://positive-reframe-backend.herokuapp.com/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
