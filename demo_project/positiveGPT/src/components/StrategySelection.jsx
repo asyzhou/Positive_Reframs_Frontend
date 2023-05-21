@@ -8,10 +8,11 @@ const StrategySelection = (props) => {
     const strategyList = ["Growth", "Impermanence", "Neutralizing", "Optimism", "Self-Affirmation", "Thankfulness"];
 
     return (
-        <div className="strategies" onChange={(e)=>props.setCurrentStrategy(e.target.value)}>
+        <div className="strategies" onChange={(e) => props.setCurrentStrategy(e.target.value)}>
             {
                 <select id="selection-list" on>
-                    <option id="first-selection" value="growth">Growth</option>
+                    <option id="first-selection" value="growth">Select a strategy</option>
+                    <option value="growth">Growth</option>
                     <option value="impermanence">Impermanence</option>
                     <option value="neutralizing">Neutralizing</option>
                     <option value="optimism">Optimism</option>
@@ -19,7 +20,7 @@ const StrategySelection = (props) => {
                     <option value="thankfulness">Thankfulness</option>
                 </select>
             }
-           
+
         </div>
     )
 }
