@@ -1,6 +1,5 @@
 .strategies {
-    padding: 0.6em 1.2em;
-    margin-top: 1.5rem;
+    padding: .6em 1.2em;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -11,18 +10,21 @@
 
 #selection-list {
     border-radius: 8px;
-    border: 1px solid transparent;
-    background-color: var(--light-grey);
+    background-color: rgba(255, 255, 255, 0.5);
     font-size: 1em;
     font-family: inherit;
+    display: inline-block;
     color: black;
-    padding: 0.3em 1em;
+    padding: 0.6em 1.2em;
     transition: background-color 0.5s;
-    margin-top: 10px;
+    margin-top: 1.5rem;
+    box-shadow: 5px 10px 15px #817c7c33;
+
+
 }
 
 #selection-list:hover {
-    background-color: rgba(241, 240, 240, 0.877);
+    background-color: rgba(221, 111, 111, 0.25);
 }
 
 #selection-list:focus {

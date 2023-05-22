@@ -4,21 +4,26 @@
   padding: 10px;
 }
 
-
 #root {
   max-height: 1280px;
   height: 800px;
   margin: 0 auto;
   text-align: center;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif, Lato;
+  font-family: Lato, Inter, Avenir, Helvetica, Arial, sans-serif;
   color: black;
 
   --light-grey: #f3f3f3;
   --grey: #e7e3e3;
   --deeper-grey: #bebfc0;
+  ;
 }
 
-h0 {
+a {
+  color: black;
+  font-style: italic;
+}
+
+h1 {
   font-family: "Helvetica Neue";
   font-size: 30px;
   font-style: normal;
@@ -30,28 +35,34 @@ h0 {
   flex-grow: 1;
   text-align: center;
   margin: 0;
+  color: white;
 }
 
-h1 {
+h2 {
   font-family: "Lato", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 25px;
   font-style: normal;
   font-variant: normal;
   /*font-weight: 400;*/
   line-height: 26.4px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+
+
 }
 
 h3 {
-  font-family: "Lato", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 15px;
+  font-family: "Lato";
+  font-size: 14px;
   font-style: normal;
   font-variant: normal;
+  font-weight: 700;
   line-height: 15.4px;
 }
 
 p {
   font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
@@ -107,10 +118,13 @@ input[type="file"] {
 /* A div named Model_Response that takes right half of the screen and center the text */
 .Model_Response {
   margin-top: 20px;
-  float: right;
+  float: left;
   width: 50%;
   height: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   animation: fade-in 0.8s ease-out;
 
 }
@@ -129,56 +143,38 @@ input[type="file"] {
   margin: 0 auto;
 }
 
-/* negative thoughts file upload */
-.custom-file-upload {
-  background-color: rgba(241, 240, 240, 0.877);
-  border-radius: 8px;
-  border: 1px solid transparent;
-  margin-top: 1.5rem;
-  color: #5fb0ee;
-  font-size: 1em;
-  font-family: inherit;
-  display: inline-block;
-  padding: 0.6em 1.2em;
-  cursor: pointer;
-  transition: 0.5s;
-  margin-right: 10px;
-
-}
-
-.custom-file-upload:hover {
-  background-color: rgba(179, 177, 177, 0.877);
-}
-
 /* A submit button with the black backgrond color and white text */
 .submit_button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid;
+  /* not transparent*/
   margin-top: 1.5rem;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-family: inherit;
-  background-color: rgba(241, 240, 240, 0.877);
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: 0.5s;
-  margin-left: 10px;
+  box-shadow: 5px 10px 15px #817c7c33;
+
 }
 
-/* for button called submit_button if user click the button the background color turns to orange */
 .submit_button:hover {
-  background-color: rgba(179, 177, 177, 0.877);
+  background-color: rgba(221, 111, 111, 0.25);
 }
 
 /* a textarea called resume_text_area that set the text style as Times New Roman and text size as 20pt */
 .positive_text_area {
+  border: 1px solid black;
+  box-shadow: 5px 15px 25px #817c7c33;
+
   font-family: "Lato", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   height: 30vh;
   width: 80%;
   padding: 3% 5% 2%;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 8px;
-  background-color: transparent;
-
 }
 
 .answer_area {
@@ -191,6 +187,7 @@ input[type="file"] {
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: -30 px;
   gap: 30px;
 }
 
@@ -229,10 +226,30 @@ button {
 }
 
 .submit_text_button:active {
-  background-color: rgba(214, 53, 53, 1);
+  background-color: rgba(214, 53, 53, 0.877);
   border: none;
 }
 
+.custom-file-upload {
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #5fb0ee;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-size: 1em;
+  font-family: inherit;
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 5px 15px 25px #817c7c33;
+
+
+}
+
+.custom-file-upload:hover {
+  background-color: rgba(221, 111, 111, 0.25);
+}
 
 .Strategy_Selection {
   margin-top: 10vh;
@@ -243,17 +260,14 @@ button {
 /* CSS */
 .submit_user_response_button {
   align-items: center;
-  appearance: none;
-  background-color: rgba(241, 240, 240, 0.877);
-  border: 1px solid transparent;
+  background-color: transparent;
   border-radius: 8px;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #36395A;
+  border: 1px solid black;
+  box-shadow: 5px 15px 25px #817c7c33;
+  color: black;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Lato";
-  font-size: 1em;
+  font-family: inherit;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -274,7 +288,6 @@ button {
   font-size: 18px;
 }
 
-
 .submit_user_response_button:focus {
   box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
@@ -290,8 +303,69 @@ button {
 }
 
 
-/*TRYING TO MAKE BACKGROUND PRETTY*/
+/*ABOUT PAGE*/
 
+.about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.about-window {
+  background-color: white;
+  padding: 10px;
+  width: 60%;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.about-window-close {
+  position: absolute;
+  color: var(--deeper-grey);
+  top: 0px;
+  right: 0px;
+  font: "Lato";
+  font-size: 20px;
+  font-weight: normal;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.about-content {
+  padding: 10px 20px 20px 20px;
+  position: relative;
+}
+
+.about-text {
+  margin: 20px;
+  position: relative;
+}
+
+/*About window x-out button*/
+
+.about-button {
+  color: white;
+  font-family: "Helvetica Neue";
+  font-size: 30px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  opacity: 70%;
+}
+
+/*BACKGROUND SMILEYS*/
 .actual_content {
   position: relative;
   z-index: 1;
@@ -345,67 +419,13 @@ button {
   }
 }
 
-/*About window*/
-.about-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+/* making buttons nice */
+.all_buttons_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  width: 100%;
 }
-
-.about-window {
-  background-color: white;
-  padding: 10px;
-  width: 60%;
-  border-radius: 8px;
-  z-index: 1000;
-}
-
-.about-window-close {
-  position: absolute;
-  color: var(--deeper-grey);
-  top: 0px;
-  right: 0px;
-  font: "Lato";
-  font-size: 20px;
-  font-weight: normal;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.about-content {
-  padding: 10px 20px 20px 20px;
-  position: relative;
-}
-
-.about-text {
-  margin: 20px;
-  position: relative;
-}
-
-/*About window x-out button*/
-
-button {
-  color: white;
-  font-family: "Helvetica Neue";
-  font-size: 30px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  line-height: 26.4px;
-  background-color: transparent;
-  border: 2px solid white;
-  border-radius: 50%;
-  opacity: 70%;
-}
-
 
 /*shifting tabs to the right when submitted*/
 
@@ -430,10 +450,38 @@ button {
   }
 }
 
-/* making buttons nice */
-.all_buttons_container {
+
+/* LOADING SPINNER */
+.rotating-text-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border: 2px solid transparent;
+  position: relative;
+  animation: rotate 1.5s infinite linear;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  color: rgba(214, 53, 53, 1);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

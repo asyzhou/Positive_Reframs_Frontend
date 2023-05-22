@@ -32,7 +32,6 @@ function RandomSmileys({ top, left, animationDelay }) {
 
 
 
-
 function App() {
   const [message, setMessage] = React.useState(''); // message to send to server
   const [fileName, setFileName] = React.useState('☁ Upload negative thoughts.txt'); // name of the file to upload [should be a resume
@@ -207,6 +206,8 @@ function App() {
     if (error) console.log('error', error)
   }
 
+
+
   // get positions for the smiley faces in the background
   const positionsRef = useRef(
     Array(30)
@@ -231,11 +232,25 @@ function App() {
     setShowAboutWindow(false);
   };
 
+  // Loading spinner
+  const RotatingText = () => {
+    return (
+      <div className="rotating-text-container">
+        <div className="circle">
+          <div className="text">&#9786;<span style={{ 'color': 'transparent' }}>&#9786;</span> </div>
+        </div>
+      </div>
+    );
+  };
+
+
 
 
   // for the response, chop it down to a list of strings if they are separated by a dot character
   // then display each string in a list
   // for the message, display it in a textarea box
+
+
 
   // the textarea box and response text should be in the middle of the left screen and the right screen
   return (
@@ -247,80 +262,79 @@ function App() {
       </div>
 
       <div className="actual_content">
-        <div>
-          <div className="App_Header">
-            <h0 style={{ 'color': 'white' }}> POSITIVE   REFRAMER v1.0 </h0>
-            <div className="button-container">
-              <button onClick={handleOpenAbout}>?</button>
-            </div>
-            {showAboutWindow && <About handleClose={handleCloseAbout} />}
+        <div className="App_Header">
+          <h1>POSITIVE   REFRAMER v1.0</h1>
+          <div className="button-container">
+            <button className="about-button" onClick={handleOpenAbout}>?</button>
           </div>
+          {showAboutWindow && <About handleClose={handleCloseAbout} />}
+        </div>
 
-          <div>
-            <div className={`User_Submit ${!isSubmitting ? 'center' : 'left'}`}>
-              <form onSubmit={handleSubmit}>
-                <h1>Looking for a positive spin?</h1>
-                <div>
-                  <label>
-                    <textarea className='positive_text_area' maxLength={100} placeholder='Today, I am feeling...' value={message} onChange={handleChange} />
-                    <p style={{ opacity: '0.5' }}>{message.length}/100 Characters Limit</p>
-                  </label>
-                </div>
+        <div>
+          <div className={`User_Submit ${!isSubmitting ? 'center' : 'left'}`}>
+            <form onSubmit={handleSubmit}>
+              <h2>Looking for a positive spin?</h2>
+              <div>
+                <label>
+                  <textarea className='positive_text_area' maxLength={100} placeholder='Today, I am feeling...' value={message} onChange={handleChange} />
+                  <p style={{ opacity: '0.5' }}>{message.length}/100 Characters Limit</p>
+                </label>
+              </div>
+              <div className='all_buttons_container' >
 
                 <div>
                   <label htmlFor="resume-file" className="custom-file-upload">
                     <span>{fileName}</span>
                     <input className='submit_text_button' id="resume-file" name='resume' type="file" onChange={handleFileUpload} />
                   </label>
-                  <StrategySelection setCurrentStrategy={setStrategy} />
-                  <input className='submit_button' type="submit" value="Reframe!" />
-
                 </div>
 
-                {/* <div className='all_buttons_container'>
-                    <label htmlFor="resume-file" className="custom-file-upload">
-                      <span>{fileName}</span>
-                      <input className='submit_text_button' id="resume-file" name='resume' type="file" onChange={handleFileUpload} />
-                    </label>
-                    <StrategySelection setCurrentStrategy={setStrategy} />
-                    <input className='submit_button' type="submit" value="Reframe!" />
-
-                  </div> */}
-              </form>
-            </div>
-
-            {isSubmitting && (
-              <div className="Model_Response fade-in">
-                <h1>Positively reframed sentences:</h1>
-                <div className='answer_area'>
-                  {
-                    isLoading ? (<p><img src={loadingDuck} style={{ width: "150px", height: "auto" }} /> <br></br>
-                      Loading a positive spin... </p>) :
-                      (
-                        <div>
-                          <h3>Own Responses</h3>
-                          <ul className='responses_items_contianer'>
-                            {responses_items_own}
-                          </ul>
-
-                          <h3> GPT Responses</h3>
-                          <ul className='responses_items_contianer'>
-                            {responses_items_gpt}
-                          </ul>
-                          <button
-                            class="submit_user_response_button"
-                            role="button"
-                            onClick={handleFeedBackSubmission}>Submit Feedback</button>
-                        </div>
-
-                      )
-                  }
-
-                </div>
+                <StrategySelection setCurrentStrategy={setStrategy} />
+                <input className='submit_button' type="submit" value="Submit →" />
               </div>
-            )}
-
+            </form>
           </div>
+
+          {isSubmitting && (
+            <div className="Model_Response">
+              <h2>Positively reframed sentences:</h2>
+              <div className='answer_area'>
+                {/* {
+            <ul className='responses_items_contianer'>
+              {test_responses_items}
+            </ul>
+          } */}
+                {
+                  isLoading ? (<p> <RotatingText /><br></br>
+                    Loading a positive spin... </p>) :
+                    (
+                      <div>
+                        {/* <p>Our Responses</p>
+                        <ul className='responses_items_contianer'>
+                          {responses_items_own}
+                        </ul>
+
+                        <p> GPT Responses</p> */}
+                        <ul className='responses_items_contianer'>
+                          {responses_items_gpt}
+                        </ul>
+                        <button
+                          class="submit_user_response_button"
+                          role="button"
+                          onClick={handleFeedBackSubmission}>Submit Feedback</button>
+                      </div>
+
+
+
+
+                    )
+                }
+
+              </div>
+
+
+            </div>
+          )}
         </div>
       </div>
 
@@ -329,5 +343,5 @@ function App() {
   );
 }
 
-
 export default App;
+

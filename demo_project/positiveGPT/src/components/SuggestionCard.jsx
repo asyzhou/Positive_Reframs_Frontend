@@ -19,8 +19,8 @@ const Suggestion_card = (props) => {
                 <p className="suggestion_card_description">{props.text}</p>
             </div>
 
-            <div className="rankings_selector"  onChange={(e)=>props.handleRatingChange(e.target.value, props.id)}>
-                <p>Rankings: </p>
+            <div className="rankings_selector" onChange={(e) => props.handleRatingChange(e.target.value, props.id)}>
+                <p>Ranking: </p>
                 <select id="selection-list" on>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -29,7 +29,7 @@ const Suggestion_card = (props) => {
                 </select>
             </div>
         </div>
-        
+
     );
 }
 
